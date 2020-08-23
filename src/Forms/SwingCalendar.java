@@ -29,7 +29,8 @@ public class SwingCalendar extends JFrame {
     JLabel label;
 
     // Todo: Refactor this constructor so the program will create only one copy of this object
-    SwingCalendar() { // Constructor
+    private static SwingCalendar instance = null;
+    private SwingCalendar() { // Constructor
 
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setTitle("Swing Calendar");
@@ -74,6 +75,12 @@ public class SwingCalendar extends JFrame {
 
         this.updateMonth();
 
+    }
+
+    public static SwingCalendar getInstance(){
+        if(instance == null)
+            instance = new SwingCalendar();
+        return instance;
     }
 
     void updateMonth() {
